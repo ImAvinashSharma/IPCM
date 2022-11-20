@@ -11,14 +11,23 @@
     "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
     "migrate": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
-  "keywords": ["node", "express", "sequelize", "postgresql", "password", "password manager"],
+  "keywords": [
+    "node",
+    "express",
+    "sequelize",
+    "postgresql",
+    "password",
+    "password manager"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "ipfs-http-client": "^55.0.0",
+    "jsonwebtoken": "^8.5.1",
     "morgan-body": "^2.6.8"
   },
   "devDependencies": {
