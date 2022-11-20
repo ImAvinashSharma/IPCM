@@ -7,7 +7,7 @@
   * docker
   * docker-compose
   * nodejs 14 and above
-  * nginx
+  * nginx 
 
 ### Run command
 
