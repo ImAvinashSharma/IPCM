@@ -1,7 +1,6 @@
 name: ci
 
 on:
-  # the 1st condition
   workflow_run:
     workflows: ["test"]
     branches: [main]
