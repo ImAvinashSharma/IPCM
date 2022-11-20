@@ -6,7 +6,7 @@
 ### Prerequisites
   * docker
   * docker-compose
-  * nodejs 14 and above
+  * node js 14 and above
   * nginx
 
 ### Run command
@@ -18,3 +18,4 @@
 
 <https://github.com/bezkoder/docker-mern-nginx/blob/master/docker-compose.yml>
 <https://github.com/bezkoder/node-js-jwt-auth-mongodb>
+<https://node-postgres.com/>
