@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ['14', '16', '18']
+        node: ['16', '18']
         os: [ubuntu-latest, windows-latest, macos-latest]
     name: Node.js ${{ matrix.node }} (${{ matrix.os }})
     steps:
@@ -26,4 +26,4 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: run server tests
-        run: npx jest
+        run: cd server && npx jest
