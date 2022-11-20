@@ -1,17 +1,15 @@
 name: ci
 
-on:
-  workflow_run:
-    workflows: ["test"]
-    branches: [main]
-    types:
-      - completed
+on: [push]
 
 permissions:
   contents: read
 
 jobs:
+  test:
+    uses: ./.github/workflows/test.yml  # use the callable tests job to run tests
   deploy:
+    needs: [test]
     runs-on: ubuntu-latest
     strategy:
       matrix:

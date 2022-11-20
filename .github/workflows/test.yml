@@ -1,18 +1,16 @@
 name: test
 
-on:
-  push:
-    branches:
-      - "main"
-  pull_request:
-    branches:
-      - "main"
+on: [workflow_call]  # allow this workflow to be called from other workflows
+
 permissions:
   contents: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
     strategy:
       matrix:
         node: ['18']
@@ -28,6 +26,9 @@ jobs:
 
       - name: run server tests
         run: cd server && npm install && npx jest
-        
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
+
       - name: run client tests
         run: cd client && npm install
