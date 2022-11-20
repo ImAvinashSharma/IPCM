@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(process.env.PORT, () => {
-  console.log("Server is running on port 3000");
+  console.log("Server is running on port" + process.env.PORT);
 });
 
 const log = fs.createWriteStream(path.join(__dirname, "logs", "express.log"), { flags: "a" });
