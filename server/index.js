@@ -38,4 +38,5 @@ morganBody(app, {
 });
 
 //TODO: Login and register
-//TODO: IPFS put data 
+//TODO: IPFS put data
+//TODO: Added extention
