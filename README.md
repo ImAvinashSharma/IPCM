@@ -7,7 +7,7 @@
   * docker
   * docker-compose
   * nodejs 14 and above
-  * nginx 
+  * nginx
 
 ### Run command
 
@@ -15,3 +15,6 @@
   docker-compose build
   docker-compose up -d
 ```
+
+<https://github.com/bezkoder/docker-mern-nginx/blob/master/docker-compose.yml>
+<https://github.com/bezkoder/node-js-jwt-auth-mongodb>

@@ -1,12 +1,10 @@
-const server = require("../index.js");
-const supertest = require("supertest");
-const requestWithSupertest = supertest(server);
+const app = require("../index.js");
+const request = require("supertest");
 
-describe("index Endpoints", () => {
-  it("GET /user should show all users", async () => {
-    const res = await requestWithSupertest.get("/users");
-    expect(res.status).toEqual(200);
-    expect(res.type).toEqual(expect.stringContaining("json"));
-    expect(res.body).toHaveProperty("users");
+//? Run test
+describe("check is server is running", () => {
+  test("should response with 200", async () => {
+    const response = await request(app).get("/");
+    expect(response.status).toBe(200);
   });
 });

@@ -1,6 +1,7 @@
 version: '3'
 services:
     postgres:
+        restart: unless-stopped
         image: postgres:latest
         ports:
             - "5432:5432"
@@ -9,6 +10,8 @@ services:
         volumes:
             - ./postgresql/data:/var/lib/postgresql/data
     service:
+        depends_on:
+        - postgres
         build:
             context: ./server
             dockerfile: Dockerfile
@@ -17,6 +20,8 @@ services:
         ports:
             - "3001:3001"
     client:
+        depends_on:
+        - service
         build:
             context: ./client
             dockerfile: Dockerfile
