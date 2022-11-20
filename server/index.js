@@ -37,6 +37,9 @@ morganBody(app, {
   stream: log
 });
 
+//? testing
+module.exports = app;
+
 //TODO: Login and register
 //TODO: IPFS put data
 //TODO: Added extention
