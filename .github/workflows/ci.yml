@@ -7,9 +7,6 @@ on:
   pull_request:
     branches:
       - "main"
-  merge:
-    branches:
-      - "main"
 
 jobs:
   check:
@@ -22,7 +19,7 @@ jobs:
         run: cd server && npm install
       - name: Check client working or not
         run: cd client && npm install
-        
+
   deploy:
     run_on: ubuntu-latest
     steps:
