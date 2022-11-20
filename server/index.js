@@ -8,9 +8,15 @@ const path = require("path");
 const ipfsClient = require("ipfs-http-client");
 // * https://github.com/jonasbostoen/nodejs-ipfs-app/blob/master/index.js
 const ipfs = ipfsClient.create("http://localhost:5001");
+const cors = require("cors");
 
 //? middelewares
+//@middelewares  "parse requests of content-type - application/json"
 app.use(express.json());
+//@middelewares "parse requests of content-type - application/x-www-form-urlencoded"
+app.use(express.urlencoded({ extended: true }));
+//@middelewares "CORS"
+app.use(cors());
 
 //? error
 const errorHandler = (error, request, response, next) => {
@@ -37,6 +43,8 @@ morganBody(app, {
   stream: log
 });
 
+//? testing
+module.exports = app;
+
 //TODO: Login and register
 //TODO: IPFS put data
-//TODO: Added extention
