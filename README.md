@@ -2,9 +2,11 @@
 
 ## How to run
 
-### prerequisites
+### Prerequisites
   * docker
   * docker-compose
+  * nodejs 14 and above
+  * nginx 
 
 ### Run command
 
