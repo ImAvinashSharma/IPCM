@@ -1,0 +1,24 @@
+version: '3'
+services:
+    postgres:
+        image: postgres:latest
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_PASSWORD: mypassword
+        volumes:
+            - ./postgresql/data:/var/lib/postgresql/data
+    service:
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        volumes:
+            - /app
+        ports:
+            - "3001:3001"
+    ui:
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        ports:
+            - "3000:80"
