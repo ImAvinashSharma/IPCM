@@ -1,27 +1,24 @@
 name: ci
 
 on:
-  push:
-    branches:
-      - "main"
-  pull_request:
-    branches:
-      - "main"
+  # the 1st condition
+  workflow_run:
+    workflows: ["test"]
+    branches: [main]
+    types:
+      - completed
+
+permissions:
+  contents: read
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Check server working or not
-        run: cd server && npm install
-      - name: Check client working or not
-        run: cd client && npm install
-
   deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    name: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
