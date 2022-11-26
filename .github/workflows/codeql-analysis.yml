@@ -5,6 +5,7 @@ on: [workflow_call]
 
 jobs:
   analyze:
+    permissions: write-all
     name: Analyze
     runs-on: ubuntu-latest
 
