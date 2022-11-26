@@ -8,6 +8,8 @@ permissions:
 jobs:
   test:
     uses: ./.github/workflows/test.yml  # use the callable tests job to run tests
+  codeql:
+    uses: ./.github/workflows/codeql-analysis.yml
   deploy:
     needs: [test]
     runs-on: ubuntu-latest
