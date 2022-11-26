@@ -8,8 +8,18 @@ permissions:
 jobs:
   test:
     uses: ./.github/workflows/test.yml  # use the callable tests job to run tests
+  codeql:
+    permissions:
+      id-token: write
+      actions: read
+      contents: read
+      pull-requests: read
+      security-events: write
+    uses: ./.github/workflows/codeql-analysis.yml
   deploy:
-    needs: [test]
+    needs:
+      - test
+      - codeql
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
