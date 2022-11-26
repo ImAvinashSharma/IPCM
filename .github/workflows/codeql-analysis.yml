@@ -5,12 +5,6 @@ on: [workflow_call]
 
 jobs:
   analyze:
-    permissions:
-      id-token: write
-      actions: read
-      contents: read
-      pull-requests: read
-      security-events: write
     name: Analyze
     runs-on: ubuntu-latest
 
