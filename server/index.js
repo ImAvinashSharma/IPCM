@@ -26,8 +26,21 @@ const errorHandler = (error, request, response, next) => {
 };
 
 app.get("/", (req, res) => {
-  res.status(200  ).send("Hello World!");
+  res.status(200).send("Hello World!");
 });
+
+app.post("/upload", async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const fileHash = await addFile(data);
+  return res.send(`http://localhost:8080/ipfs/${fileHash}`);
+});
+
+const addFile = async ({ path, content }) => {
+  const file = { path: path, content: Buffer.from(content) };
+  const filesAdded = await ipfs.add(file);
+  return filesAdded.cid;
+};
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port :: " + process.env.PORT);
