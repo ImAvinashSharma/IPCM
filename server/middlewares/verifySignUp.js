@@ -1,6 +1,10 @@
-checkDuplicateUsernameOrEmail = (req, res, next) => {};
+checkDuplicateUsernameOrEmail = (req, res, next) => {
+  next();
+};
 
-checkRolesExisted = (req, res, next) => {};
+checkRolesExisted = (req, res, next) => {
+  next();
+};
 
 const verifySignUp = {
   checkDuplicateUsernameOrEmail,
