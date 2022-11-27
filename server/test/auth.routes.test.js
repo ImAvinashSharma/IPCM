@@ -1,5 +1,15 @@
 const app = require("../index.js");
 const request = require("supertest");
+const db = require("../db");
+beforeEach(done => {
+  db.isLive();
+  done();
+});
+
+afterEach(done => {
+  db.close();
+  done();
+});
 
 //? Run test
 describe("check is server is running", () => {

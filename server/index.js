@@ -6,7 +6,6 @@ const morganBody = require("morgan-body");
 const fs = require("fs");
 const path = require("path");
 const ipfsClient = require("ipfs-http-client");
-var cluster = require("cluster");
 const ipfs = ipfsClient.create("http://localhost:5001");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -18,9 +17,13 @@ app.use(helmet());
 //@middelewares "parse requests of content-type - application/x-www-form-urlencoded"
 app.use(express.urlencoded({ extended: true }));
 //@middelewares "CORS"
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:8081"
+};
+app.use(cors(corsOptions));
 
-const models = require("./db");
+const db = require("./db");
+db.isLive();
 
 // routes
 require("./routes/auth.routes")(app);

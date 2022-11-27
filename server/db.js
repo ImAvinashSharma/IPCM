@@ -1,32 +1,75 @@
-const cassandra = require("cassandra-driver");
 const config = require("./config/db.config");
+const cassandra = require("cassandra-driver");
 
-const authProvider = new cassandra.auth.PlainTextAuthProvider("cassandra", "cassandra");
+const distance = cassandra.types.distance;
+const options = {
+  contactPoints: [config.HOST],
+  protocolOptions: {
+    port: config.PORT
+  },
+  localDataCenter: config.DataCenter,
+  keyspace: config.keyspace,
+  credentials: { username: config.username, password: config.password },
+  pooling: {
+    coreConnectionsPerHost: {
+      [distance.local]: 3,
+      [distance.remote]: 2
+    }
+  },
+  encoding: {
+    map: Map,
+    set: Set
+  }
+};
+let client = new cassandra.Client(options);
+let state = client.getState();
 
-let client = new cassandra.Client({ contactPoints: [config.HOST], authProvider, localDataCenter: config.DataCenter, keyspace: config.keyspace });
+client.on("log", function (level, loggerName, message, furtherInfo) {
+  if (level === "info") {
+    console.log(`${level} - ${loggerName}:  ${message} ${furtherInfo}`);
+  }
+});
 
-exports.client = client;
+module.exports.state = state;
+
+module.exports.isLive = () => {
+  client.execute("SELECT NOW() FROM system.local;", function (err, result) {
+    if (err) {
+      console.log("\n Unable to connect Cassandra...\n");
+    } else {
+      console.log("\n Cassandra Database connected...\n");
+    }
+  });
+};
+
+let executequery = query =>
+  new Promise((resolve, reject) =>
+    client.execute(query, function (err, result) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    })
+  );
+
+module.exports.query = query => {
+  return executequery(query);
+};
+
+module.exports.client = client;
+
+module.exports.close = () => {
+  client.shutdown();
+};
 
 /*
-//? ”cassandra-driver” is in the node_modules folder. Redirect if necessary.
-let cassandra = require('cassandra-driver');
+CREATE KEYSPACE grocery WITH REPLICATION = {'class' : 'SimpleStrategy','replication_factor' : 1};
 
-//? Replace 'Username' and 'Password' with the username and password from your cluster settings
-let authProvider = new cassandra.auth.PlainTextAuthProvider('Username', 'Password');
-//? Replace the PublicIPs with the IP addresses of your clusters
-let contactPoints = ['PublicIP1','PublicIP2','PublicIP3'];
-//? Replace DataCenter with the name of your data center, for example: 'AWS_VPC_US_EAST_1'
-let localDataCenter = 'DataCenter';
+CREATE TABLE IF NOT EXISTS grocery.fruit_stock (item_id TEXT, name TEXT, price_p_item DECIMAL, PRIMARY KEY (item_id));
 
-let client = new cassandra.Client({contactPoints: contactPoints, authProvider: authProvider, localDataCenter: localDataCenter, keyspace:'grocery'});
-
-//? Define and execute the queries
-let query = 'SELECT name, price_p_item FROM grocery.fruit_stock WHERE name=? ALLOW FILTERING';
-let q1 = client.execute(query, ['oranges']).then(result => {console.log('The cost per orange is ' + result.rows[0].price_p_item);}).catch((err) => {console.log('ERROR oranges:', err);});
-let q2 = client.execute(query, ['pineapples']).then(result => {console.log('The cost per pineapple is ' + result.rows[0].price_p_item);}).catch((err) => {console.log('ERROR pineapples:', err);});
-let q3 = client.execute(query, ['apples']).then(result => {console.log('The cost per apple is ' + result.rows[0].price_p_item);}).catch((err) => {console.log('ERROR apples:', err);});
-
-//? Exit the program after all queries are complete
-Promise.allSettled([q1,q2,q3]).finally(() => client.shutdown());
-
+INSERT INTO grocery.fruit_stock (item_id, name, price_p_item) VALUES ('a0','apples',0.50);
+INSERT INTO grocery.fruit_stock (item_id, name, price_p_item) VALUES ('b1','bananas',0.40);
+INSERT INTO grocery.fruit_stock (item_id, name, price_p_item) VALUES ('c3','oranges',0.35);
+INSERT INTO grocery.fruit_stock (item_id, name, price_p_item) VALUES ('d4','pineapples',2.5);
 */

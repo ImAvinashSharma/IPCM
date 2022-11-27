@@ -492,3 +492,274 @@ Response: 200 27.191 ms
 
 Request: GET /socket.io/?EIO=3&transport=polling&t=OIuOr6s at Sun Nov 27 2022 14:50:27 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56
 Response: 404 15.495 ms 
+
+Request: GET /status at Sun Nov 27 2022 15:37:08 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56
+Response Body:
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Server Status</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+    <style>
+      * {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+body.hide-cpu .container.cpu,
+body.hide-mem .container.mem,
+body.hide-load .container.load,
+body.hide-responseTime .container.responseTime,
+body.hide-rps .container.rps,
+body.hide-statusCodes .container.statusCodes {
+  display: none;
+}
+
+h1 {
+  font-size: 3em;
+  color: #222;
+  margin: 0;
+}
+
+h5 {
+  margin: 0;
+  color: #888;
+}
+
+h6 {
+  margin: 0;
+}
+
+p {
+  font-size: 0.7em;
+  color: #888;
+}
+
+span {
+  cursor: pointer;
+  font-size: 10px;
+  margin-left: 5px;
+  border: 1px solid #DDD;
+  padding: 3px 10px 4px 10px;
+}
+
+canvas {
+  width: 400px;
+  height: 100px;
+}
+
+.content {
+  width: 600px;
+  margin: auto;
+}
+
+.active {
+  background: #eeeeee;
+}
+
+.stats
+Response: 304 42.146 ms 
+
+Request: GET /status at Sun Nov 27 2022 15:37:15 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56
+Response Body:
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Server Status</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+    <style>
+      * {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+body.hide-cpu .container.cpu,
+body.hide-mem .container.mem,
+body.hide-load .container.load,
+body.hide-responseTime .container.responseTime,
+body.hide-rps .container.rps,
+body.hide-statusCodes .container.statusCodes {
+  display: none;
+}
+
+h1 {
+  font-size: 3em;
+  color: #222;
+  margin: 0;
+}
+
+h5 {
+  margin: 0;
+  color: #888;
+}
+
+h6 {
+  margin: 0;
+}
+
+p {
+  font-size: 0.7em;
+  color: #888;
+}
+
+span {
+  cursor: pointer;
+  font-size: 10px;
+  margin-left: 5px;
+  border: 1px solid #DDD;
+  padding: 3px 10px 4px 10px;
+}
+
+canvas {
+  width: 400px;
+  height: 100px;
+}
+
+.content {
+  width: 600px;
+  margin: auto;
+}
+
+.active {
+  background: #eeeeee;
+}
+
+.stats
+Response: 304 6.650 ms 
+
+Request: GET /status at Sun Nov 27 2022 15:37:16 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56
+Response Body:
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Server Status</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+    <style>
+      * {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+body.hide-cpu .container.cpu,
+body.hide-mem .container.mem,
+body.hide-load .container.load,
+body.hide-responseTime .container.responseTime,
+body.hide-rps .container.rps,
+body.hide-statusCodes .container.statusCodes {
+  display: none;
+}
+
+h1 {
+  font-size: 3em;
+  color: #222;
+  margin: 0;
+}
+
+h5 {
+  margin: 0;
+  color: #888;
+}
+
+h6 {
+  margin: 0;
+}
+
+p {
+  font-size: 0.7em;
+  color: #888;
+}
+
+span {
+  cursor: pointer;
+  font-size: 10px;
+  margin-left: 5px;
+  border: 1px solid #DDD;
+  padding: 3px 10px 4px 10px;
+}
+
+canvas {
+  width: 400px;
+  height: 100px;
+}
+
+.content {
+  width: 600px;
+  margin: auto;
+}
+
+.active {
+  background: #eeeeee;
+}
+
+.stats
+Response: 304 4.509 ms 
+
+Request: GET /status at Sun Nov 27 2022 15:47:59 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56
+Response Body:
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Server Status</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+    <style>
+      * {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+body.hide-cpu .container.cpu,
+body.hide-mem .container.mem,
+body.hide-load .container.load,
+body.hide-responseTime .container.responseTime,
+body.hide-rps .container.rps,
+body.hide-statusCodes .container.statusCodes {
+  display: none;
+}
+
+h1 {
+  font-size: 3em;
+  color: #222;
+  margin: 0;
+}
+
+h5 {
+  margin: 0;
+  color: #888;
+}
+
+h6 {
+  margin: 0;
+}
+
+p {
+  font-size: 0.7em;
+  color: #888;
+}
+
+span {
+  cursor: pointer;
+  font-size: 10px;
+  margin-left: 5px;
+  border: 1px solid #DDD;
+  padding: 3px 10px 4px 10px;
+}
+
+canvas {
+  width: 400px;
+  height: 100px;
+}
+
+.content {
+  width: 600px;
+  margin: auto;
+}
+
+.active {
+  background: #eeeeee;
+}
+
+.stats
+Response: 304 33.168 ms 
+
+Request: GET /add at Sun Nov 27 2022 16:34:18 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56
+Response: 404 15.518 ms 
