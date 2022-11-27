@@ -6,16 +6,11 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon  index.js",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
-    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
-    "migrate": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
+    "test": "npx jest"
   },
   "keywords": [
     "node",
     "express",
-    "sequelize",
-    "postgresql",
     "password",
     "password manager"
   ],
@@ -34,7 +29,6 @@
     "morgan-body": "^2.6.8"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "jest": "^29.3.1",
     "nodemon": "^2.0.20",
     "supertest": "^6.3.1"
