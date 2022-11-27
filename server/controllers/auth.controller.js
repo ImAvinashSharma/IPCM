@@ -10,7 +10,7 @@ exports.signup = async (req, res) => {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, parseInt(process.env.SALT_ROUNDS))
   };
-  const query = "INSERT INTO user (id, username , password, email) VALUES (uuid(),?,?,?);";
+  const query = "INSERT INTO users (id, username , password, email, created_at) VALUES (uuid(),?,?,?,toTimestamp(now()));";
   await client.execute(query, [user.username, user.password, user.email], { prepare: true });
   return res.status(200).send({ message: "User was registered successfully!" });
 };
@@ -21,7 +21,7 @@ exports.signin = async (req, res) => {
     email: req.body.email,
     password: req.body.password
   };
-  const query = "SELECT * FROM user WHERE username = ?;";
+  const query = "SELECT * FROM users WHERE username = ?;";
   const user_data = await client.execute(query, [user.username], { prepare: true });
   if (user_data.rowLength === 0) {
     return res.status(404).send({ message: "User Not found." });
