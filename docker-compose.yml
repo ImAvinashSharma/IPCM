@@ -1,17 +1,22 @@
 version: '3'
 services:
-    postgres:
-        restart: unless-stopped
-        image: postgres:latest
+    cassandra:
+        image: cassandra
         ports:
-            - "5432:5432"
+        - 9042:9042
         environment:
-            POSTGRES_PASSWORD: mypassword
-        volumes:
-            - ./postgresql/data:/var/lib/postgresql/data
-    service:
+            CASSANDRA_USE_ASTRA: "false"
+            CASSANDRA_USER: "cassandra"
+            CASSANDRA_PASSWORD: "cassandra"
+            CASSANDRA_LOCAL_DC: "datacenter1"
+            CASSANDRA_CONTACT_POINTS: "db:9042"
+            CASSANDRA_KEYSPACE_CQL: "CREATE KEYSPACE test_keyspace WITH REPLICATION = {'class':'SimpleStrategy','replication_factor':1};"
+            MONITORING_PROMETHEUS: "false"
+            MONITORING_GRAFANA: "false"
+            DISTRIBUTED_TRACING_ENABLED: "false"
+    server:
         depends_on:
-        - postgres
+        - cassandra
         build:
             context: ./server
             dockerfile: Dockerfile
@@ -21,7 +26,8 @@ services:
             - "3001:3001"
     client:
         depends_on:
-        - service
+        - server
+        - cassandra
         build:
             context: ./client
             dockerfile: Dockerfile

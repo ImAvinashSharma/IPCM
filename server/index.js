@@ -36,7 +36,7 @@ const errorHandler = (error, request, response, next) => {
   response.status(status).send(error.message);
 };
 
-app.get("/", (req, res) => {
+app.all("/", (req, res) => {
   res.status(200).send("Hello World!");
 });
 
@@ -53,6 +53,11 @@ const addFile = async ({ path, content }) => {
   return filesAdded.cid;
 };
 
+//? healthcheck
+app.all("/healthcheck", (req, res) => {
+  return res.status(200).send("OK");
+});
+
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port :: " + process.env.PORT);
 });
@@ -66,48 +71,6 @@ morganBody(app, {
   noColors: true,
   stream: log
 });
-
-app.use(
-  require("express-status-monitor")({
-    title: "Server Status", // title for status screen
-    path: "/status", // path for server status invokation
-    spans: [
-      {
-        interval: 1, // every second
-        retention: 60 // keep 60 datapoints in memory
-      },
-      {
-        interval: 5, // every 5 seconds
-        retention: 60
-      }
-    ],
-    chartVisibility: {
-      cpu: true, // enable CPU Usage
-      mem: true, // enable Memory Usage
-      load: true, // enable One Minute Load Avg
-      eventLoop: true, // enable EventLoop Precess Usage
-      heap: true, // enable Heap Memory Usage
-      responseTime: true, // enable Response Time
-      rps: true, // enable Requests per Second
-      statusCodes: true // enable Status Codes
-    },
-    healthChecks: [
-      {
-        protocol: "http",
-        host: "localhost",
-        path: "/api/auth",
-        port: "3001"
-      },
-      {
-        protocol: "http",
-        host: "localhost",
-        path: "/",
-        port: "3001"
-      }
-    ]
-    // ignoreStartsWith: "/admin" // ignore path starts with
-  })
-);
 
 //? testing
 module.exports = app;

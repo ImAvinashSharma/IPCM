@@ -12,7 +12,7 @@ services:
       CASSANDRA_PASSWORD: "cassandra"
       CASSANDRA_LOCAL_DC: "datacenter1"
       CASSANDRA_CONTACT_POINTS: "db:9042"
-      CASSANDRA_KEYSPACE_CQL: "CREATE KEYSPACE test_keyspace WITH REPLICATION = {'class':'SimpleStrategy','replication_factor':1};"
+      CASSANDRA_KEYSPACE_CQL: "CREATE KEYSPACE mykeyspace WITH REPLICATION = {'class':'SimpleStrategy','replication_factor':1};"
       MONITORING_PROMETHEUS: "false"
       MONITORING_GRAFANA: "false"
       DISTRIBUTED_TRACING_ENABLED: "false"
