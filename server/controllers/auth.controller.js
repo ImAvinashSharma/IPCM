@@ -46,4 +46,20 @@ exports.signin = async (req, res) => {
     accessToken: token
   });
 };
-//
+
+exports.forgotPassword = async (req, res) => {
+  const user = {
+    username: req.body.username,
+    email: req.body.email
+  };
+  const query = "SELECT * FROM users WHERE username = ?;";
+  const user_data = await client.execute(query, [user.username], { prepare: true });
+  if (user_data.rowLength === 0) {
+    return res.status(404).send({ message: "User Not found." });
+  }
+
+  sendMail(user.email, "Reset password",""); //TODO: Added temples and OTP generation
+  res.status(200).send({
+    message: "Email and OTP send"
+  });
+};
