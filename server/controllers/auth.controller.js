@@ -1,8 +1,9 @@
 const config = require("../config/auth.config");
 require("dotenv").config();
-const { client } = require("..//db");
+const { client } = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const sendMail = require("../notifications/email");
 
 exports.signup = async (req, res) => {
   const user = {
@@ -33,6 +34,7 @@ exports.signin = async (req, res) => {
       message: "Invalid Password!"
     });
   }
+  sendMail(user.email, "New login detected", ""); // TODO Added temples
   const token = jwt.sign({ id: user_data.rows[0].id }, config.secret, {
     expiresIn: 86400 // 24 hours
   });
@@ -44,3 +46,4 @@ exports.signin = async (req, res) => {
     accessToken: token
   });
 };
+//
