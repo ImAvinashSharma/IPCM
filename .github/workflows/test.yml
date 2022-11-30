@@ -25,10 +25,15 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: run server tests
-        run: cd server && npm install && npx jest
         env:
-          POSTGRES_HOST: postgres
-          POSTGRES_PORT: 5432
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          keyspace: ${{ secrets.keyspace }}
+          strategy: ${{ secrets.strategy }}
+          DataCenter: ${{ secrets.DataCenter }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: cd server && npm install && npx jest
 
       - name: run client tests
         run: cd client && npm install

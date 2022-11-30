@@ -34,7 +34,8 @@ exports.signin = async (req, res) => {
       message: "Invalid Password!"
     });
   }
-  sendMail(user.email, "New login detected", ""); // TODO Added temples
+  const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+  sendMail(user.email, "New login detected", `${ip} - ${user.username}`); // TODO Added temples
   const token = jwt.sign({ id: user_data.rows[0].id }, config.secret, {
     expiresIn: 86400 // 24 hours
   });
@@ -58,7 +59,7 @@ exports.forgotPassword = async (req, res) => {
     return res.status(404).send({ message: "User Not found." });
   }
 
-  sendMail(user.email, "Reset password",""); //TODO: Added temples and OTP generation
+  sendMail(user.email, "Reset password", ""); //TODO: Added temples and OTP generation
   res.status(200).send({
     message: "Email and OTP send"
   });
