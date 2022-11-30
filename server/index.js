@@ -9,7 +9,7 @@ const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient.create("http://localhost:5001");
 const cors = require("cors");
 const helmet = require("helmet");
-
+require("./cron/checks").init();
 //? middelewares
 //@middelewares  "parse requests of content-type - application/json"
 app.use(express.json());

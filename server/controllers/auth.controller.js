@@ -1,8 +1,9 @@
 const config = require("../config/auth.config");
 require("dotenv").config();
-const { client } = require("..//db");
+const { client } = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const sendMail = require("../notifications/email");
 
 exports.signup = async (req, res) => {
   const user = {
@@ -33,6 +34,8 @@ exports.signin = async (req, res) => {
       message: "Invalid Password!"
     });
   }
+  const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+  sendMail(user.email, "New login detected", `${ip} - ${user.username}`); // TODO Added temples
   const token = jwt.sign({ id: user_data.rows[0].id }, config.secret, {
     expiresIn: 86400 // 24 hours
   });
@@ -42,5 +45,22 @@ exports.signin = async (req, res) => {
     email: user_data.rows[0].email,
     // roles: authorities,
     accessToken: token
+  });
+};
+
+exports.forgotPassword = async (req, res) => {
+  const user = {
+    username: req.body.username,
+    email: req.body.email
+  };
+  const query = "SELECT * FROM users WHERE username = ?;";
+  const user_data = await client.execute(query, [user.username], { prepare: true });
+  if (user_data.rowLength === 0) {
+    return res.status(404).send({ message: "User Not found." });
+  }
+
+  sendMail(user.email, "Reset password", ""); //TODO: Added temples and OTP generation
+  res.status(200).send({
+    message: "Email and OTP send"
   });
 };
