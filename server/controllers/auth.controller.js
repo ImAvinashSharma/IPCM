@@ -17,6 +17,7 @@ exports.signup = async (req, res) => {
 };
 
 exports.signin = async (req, res) => {
+  console.log("Signin");
   const user = {
     username: req.body.username,
     email: req.body.email,
