@@ -22,7 +22,7 @@ app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 //@middelewares "CORS"
 const corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:3000"
 };
 app.use(cors(corsOptions));
 
