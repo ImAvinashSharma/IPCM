@@ -1,3 +1,4 @@
+cassandra 4.0.7
 cqlsh
 CREATE KEYSPACE mykeyspace WITH REPLICATION = {'class':'SimpleStrategy','replication_factor':1};
 use mykeyspace;
