@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 export default function Login() {
+  const [loading, setLoading] = useState(false);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,6 +11,7 @@ export default function Login() {
 
   const handleSignUp = e => {
     e.preventDefault();
+    setLoading(true);
     fetch("http://localhost:3001/api/auth/signin", {
       method: "POST",
       headers: {
@@ -30,10 +32,18 @@ export default function Login() {
           localStorage.setItem("user", JSON.stringify(data.user));
           history.push("/dashboard");
         }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
-  return (
+  return loading ? (
+    <>Loading...</>
+  ) : (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
         <h1 className="text-3xl font-semibold text-center text-purple-700 uppercase">Sign in</h1>

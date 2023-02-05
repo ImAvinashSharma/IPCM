@@ -1,9 +1,42 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Dashboard() {
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(true);
+  const history = useHistory();
+
+  useEffect(() => {
+    fetch("http://localhost:3001/api/test/user", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": localStorage.getItem("token")
+      }
+    })
+      .then(res => {
+        if (res.status === 403 || res.status === 401) {
+          history.push("/");
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => {
+        setError("You are not authorized to view this page");
+        console.log(err);
+        history.push("/");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   const [open, setOpen] = useState(false);
-  return (
+  return loading ? (
+    <>Loading... {JSON.stringify(error)}</>
+  ) : (
     <div className="flex">
       <div className={` ${open ? "w-40" : "w-60 "} flex flex-col h-screen p-3 bg-gray-800 shadow duration-300`}>
         <div className="space-y-3">
