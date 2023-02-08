@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-function VaultItems() {
-  const [vaultItems, setVaultItems] = useState([]);
+
+export default function Cards() {
+  const [cardItems, setCardItems] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3001/api/valtItem", {
       method: "GET",
@@ -14,7 +15,7 @@ function VaultItems() {
         return res.json();
       })
       .then(data => {
-        setVaultItems(data);
+        setCardItems(data);
       });
   }, []);
 
@@ -51,8 +52,8 @@ function VaultItems() {
             </tr>
           </thead>
           <tbody>
-            {vaultItems &&
-              vaultItems.map(vaultItem => {
+            {cardItems &&
+              cardItems.map(vaultItem => {
                 return (
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="w-4 p-4">
@@ -88,5 +89,3 @@ function VaultItems() {
     </div>
   );
 }
-
-export default VaultItems;
