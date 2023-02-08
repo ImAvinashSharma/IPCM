@@ -2,24 +2,27 @@ exports.getValtItem = (req, res) => {
   res.status(200).json([
     {
       app: "gamil",
-      email: "test@test.com",
+      email: "gmail@test.com",
       password: "test",
       created_at: "toady",
       last_used_at: "toady",
+      url: "https://gmail.com/",
     },
     {
-      app: "fb",
-      email: "test@test.com",
+      app: "facebook",
+      email: "facebook@test.com",
       password: "test",
       created_at: "toady",
       last_used_at: "toady",
+      url: "https://www.facebook.com/",
     },
     {
-      app: "wb",
-      email: "test@test.com",
+      app: "whatsapp",
+      email: "whatsapp@test.com",
       password: "test",
       created_at: "toady",
       last_used_at: "toady",
+      url: "https://web.whatsapp.com/",
     },
   ]);
 };
