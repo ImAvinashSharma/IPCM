@@ -22,7 +22,7 @@ app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 //@middelewares "CORS"
 const corsOptions = {
-  origin: "http://localhost:3000"
+  origin: "http://localhost:3000",
 };
 app.use(cors(corsOptions));
 
@@ -32,6 +32,7 @@ db.isLive();
 // routes
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
+require("./routes/get.valt")(app);
 
 //? error
 const errorHandler = (error, request, response, next) => {
@@ -70,10 +71,12 @@ app.listen(PORT, () => {
 app.use(errorHandler);
 
 //? loger
-const log = fs.createWriteStream(path.join(__dirname, "logs", "express.log"), { flags: "a" });
+const log = fs.createWriteStream(path.join(__dirname, "logs", "express.log"), {
+  flags: "a",
+});
 morganBody(app, {
   noColors: true,
-  stream: log
+  stream: log,
 });
 
 //? testing

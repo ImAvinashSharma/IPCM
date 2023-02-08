@@ -2,8 +2,12 @@ exports.allAccess = (req, res) => {
   res.status(200).send("Public Content.");
 };
 
+exports.validateToken = (req, res) => {
+  return res.status(200).json({ message: "Valid Token" });
+};
+
 exports.userBoard = (req, res) => {
-  res.status(200).send("User Content.");
+  res.status(200).json({ message: "User Content." });
 };
 
 exports.adminBoard = (req, res) => {

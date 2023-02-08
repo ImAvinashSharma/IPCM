@@ -41,10 +41,12 @@ exports.signin = async (req, res) => {
     expiresIn: 86400 // 24 hours
   });
   res.status(200).send({
-    id: user.id,
-    username: user_data.rows[0].username,
-    email: user_data.rows[0].email,
-    // roles: authorities,
+    user: {
+      id: user_data.rows[0].id,
+      username: user_data.rows[0].username,
+      email: user_data.rows[0].email
+      // roles: authorities,
+    },
     accessToken: token
   });
 };

@@ -9,5 +9,7 @@ module.exports = function (app) {
 
   app.get("/api/test/all", controller.allAccess);
 
+  app.post("/api/token/validate", [authJwt.verifyToken], controller.validateToken);
+
   app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
 };
