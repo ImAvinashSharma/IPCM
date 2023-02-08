@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-export default function SignIn() {
+export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -9,10 +9,10 @@ export default function SignIn() {
 
   let history = useHistory();
 
-  const handleSignIn = (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
     setLoading(true);
-    fetch("http://localhost:3001/api/auth/signin", {
+    fetch("http://localhost:3001/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,8 +47,41 @@ export default function SignIn() {
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
         <h1 className="text-3xl font-semibold text-center text-purple-700 uppercase">
-          Sign in
+          Sign Up
         </h1>
+        {/* <div class="flex flex-col space-y-4 min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-gray-900">
+          <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-16 h-16 rounded-2xl p-3 border border-blue-100 text-blue-400 bg-blue-50"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <div class="flex flex-col ml-3">
+                  <div class="font-medium leading-none">
+                    Delete Your Acccount ?
+                  </div>
+                  <p class="text-sm text-gray-600 leading-none mt-1">
+                    By deleting your account you will lose your all data
+                  </p>
+                </div>
+              </div>
+              <button class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div> */}
         <div className="mt-6">
           <div className="mb-2">
             <label
@@ -101,7 +134,7 @@ export default function SignIn() {
           </Link>
           <div className="mt-6">
             <button
-              onClick={handleSignIn}
+              onClick={handleSignUp}
               className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
             >
               Login

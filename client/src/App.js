@@ -1,7 +1,15 @@
-import Login from "./auth/SignIn";
+import SignIn from "./auth/SignIn";
+import Forgot from "./auth/Forgot";
 import React, { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import SignUp from "./auth/SignUp";
+import Home from "./components/Home";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -10,16 +18,16 @@ export default function App() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token")
-      }
+        "x-access-token": localStorage.getItem("token"),
+      },
     })
-      .then(res => {
+      .then((res) => {
         if (res.status !== 200) {
           setIsLoggedIn(false);
         }
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         if (data) {
           console.log(data);
           setIsLoggedIn(true);
@@ -32,12 +40,20 @@ export default function App() {
       <div>
         <Switch>
           <Route exact path="/dashboard">
-            {isLoggedIn ? <Redirect to="/dashboard" /> : <Login />}
+            <Redirect to="/dashboard" />
             <Dashboard />
           </Route>
-          {/* reset */}
+          <Route exact path="/signin">
+            <SignIn />
+          </Route>
+          <Route exact path="/signup">
+            <SignUp />
+          </Route>
+          <Route exact path="/forgotpassword">
+            <Forgot />
+          </Route>
           <Route exact path="/">
-            {isLoggedIn ? <Redirect to="/dashboard" /> : <Login />}
+            <Home />
           </Route>
         </Switch>
       </div>

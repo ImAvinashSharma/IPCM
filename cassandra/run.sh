@@ -1,0 +1,1 @@
+docker run -p 9042:9042 cassandra:4.0.7
