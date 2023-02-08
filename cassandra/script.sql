@@ -11,5 +11,5 @@ CREATE TABLE users (
     updated_at timestamp,
     PRIMARY KEY (username)
 );
-
+USE mykeyspace;
 CREATE TABLE users (id uuid, username varchar, email varchar, password varchar, created_at timestamp, updated_at timestamp, PRIMARY KEY (username));

@@ -180,9 +180,9 @@ export default function SignUp() {
         <p className="mt-8 text-xs font-light text-center text-gray-700">
           <Link
             className="font-medium text-purple-600 hover:underline"
-            to="signup"
+            to="/signin"
           >
-            Don't have an account? Sign up
+            have an account? Sign In
           </Link>
         </p>
       </div>
