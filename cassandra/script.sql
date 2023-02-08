@@ -7,6 +7,7 @@ CREATE TABLE users (
     username varchar,
     email varchar,
     password varchar,
+    pin int,
     created_at timestamp,
     updated_at timestamp,
     PRIMARY KEY (username)

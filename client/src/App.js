@@ -2,14 +2,11 @@ import SignIn from "./auth/SignIn";
 import Forgot from "./auth/Forgot";
 import React, { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import SignUp from "./auth/SignUp";
 import Home from "./components/Home";
+import Cards from "./components/Cards";
+import Settings from "./components/Settings";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,16 +15,16 @@ export default function App() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token"),
-      },
+        "x-access-token": localStorage.getItem("token")
+      }
     })
-      .then((res) => {
+      .then(res => {
         if (res.status !== 200) {
           setIsLoggedIn(false);
         }
         return res.json();
       })
-      .then((data) => {
+      .then(data => {
         if (data) {
           console.log(data);
           setIsLoggedIn(true);
@@ -54,6 +51,12 @@ export default function App() {
           </Route>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/cards">
+            <Cards />
+          </Route>
+          <Route exact path="/settings">
+            <Settings />
           </Route>
         </Switch>
       </div>
