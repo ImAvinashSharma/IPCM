@@ -35,7 +35,7 @@
     "node-cron": "^3.0.2",
     "nodemailer": "^6.8.0",
     "object-hash": "^3.0.0",
-    "redis": "^4.5.1",
+    "redis": "^4.6.4",
     "twilio": "^3.83.3",
     "uuid": "^9.0.0",
     "winston": "^3.8.2"

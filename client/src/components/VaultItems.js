@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 function VaultItems() {
   const [vaultItems, setVaultItems] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3001/api/valtItem", {
+    const local = localStorage.getItem("user");
+    const { username } = JSON.parse(local);
+    fetch(`http://localhost:3001/api/valtItem/${username}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -21,6 +23,13 @@ function VaultItems() {
   return (
     <div className="p-2">
       <div className="text-3xl p-2 font-bold">Vault Items</div>
+      <div className="m-2 flex justify-between items-center">
+        <div className="flex items-center space-x-2">{/* DO Something */}</div>
+        <div className="flex items-center space-x-2">
+          <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">Add New</button>
+        </div>
+      </div>
+
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -52,9 +61,9 @@ function VaultItems() {
           </thead>
           <tbody>
             {vaultItems &&
-              vaultItems.map(vaultItem => {
+              vaultItems.map((vaultItem, id) => {
                 return (
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <tr key={id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="w-4 p-4">
                       <div className="flex items-center">
                         <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />

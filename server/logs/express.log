@@ -10,3 +10,45 @@ Request Body:
 	"email": "a@a.com"
 }
 Response: 404 0.560 ms 
+
+Request: GET /api/vault/addItem at Thu Feb 09 2023 22:12:55 GMT+0530, IP: ::ffff:127.0.0.1, User Agent: got (https://github.com/sindresorhus/got)
+Response: 404 1.297 ms 
+
+Request: GET /api/vault/addItem at Thu Feb 09 2023 22:13:16 GMT+0530, IP: ::ffff:127.0.0.1, User Agent: got (https://github.com/sindresorhus/got)
+Response: 404 1.867 ms 
+
+Request: GET /api/vault/addItem at Thu Feb 09 2023 22:13:21 GMT+0530, IP: ::ffff:127.0.0.1, User Agent: got (https://github.com/sindresorhus/got)
+Response: 404 0.320 ms 
+
+Request: GET /api/valtItem at Thu Feb 09 2023 22:43:39 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+Response: 404 0.908 ms 
+
+Request: GET /api/valtItem at Thu Feb 09 2023 22:44:07 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+Response: 404 0.318 ms 
+
+Request: GET /api/valtItem at Thu Feb 09 2023 22:44:14 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+Response: 404 0.258 ms 
+
+Request: GET /api/valtItem/avinash at Thu Feb 09 2023 22:45:18 GMT+0530, IP: ::ffff:127.0.0.1, User Agent: Thunder Client (https://www.thunderclient.com)
+Response: 404 2.018 ms 
+
+Request: GET /api/valtItem/avinash at Thu Feb 09 2023 22:45:33 GMT+0530, IP: ::ffff:127.0.0.1, User Agent: Thunder Client (https://www.thunderclient.com)
+Response: 404 2.123 ms 
+
+Request: GET /api/valtItem/avinash at Thu Feb 09 2023 22:45:39 GMT+0530, IP: ::ffff:127.0.0.1, User Agent: Thunder Client (https://www.thunderclient.com)
+Response: 404 0.396 ms 
+
+Request: GET /api/valtItem/avinash at Thu Feb 09 2023 22:46:02 GMT+0530, IP: ::ffff:127.0.0.1, User Agent: Thunder Client (https://www.thunderclient.com)
+Response: 404 0.319 ms 
+
+Request: GET /api/valtItem at Thu Feb 09 2023 22:46:46 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+Response: 404 0.963 ms 
+
+Request: GET /api/valtItem/ at Thu Feb 09 2023 22:46:57 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+Response: 404 0.346 ms 
+
+Request: GET /api/valtItem/ at Thu Feb 09 2023 22:48:50 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+Response: 404 0.290 ms 
+
+Request: GET /api/valtItem/ at Thu Feb 09 2023 22:48:57 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+Response: 404 0.248 ms 

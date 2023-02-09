@@ -33,7 +33,7 @@ function Forgot() {
   ) : (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
-        <h1 className="text-3xl font-semibold text-center text-purple-700 uppercase">Sign Up</h1>
+        <h1 className="text-3xl font-semibold text-center text-purple-700 uppercase">Forgot Password</h1>
         {/* <div class="flex flex-col space-y-4 min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-gray-900">
           <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
             <div class="flex items-center justify-between">

@@ -5,7 +5,7 @@ import Dashboard from "./components/Dashboard";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import SignUp from "./auth/SignUp";
 import Home from "./components/Home";
-import Cards from "./components/Cards";
+import AddItemsToVault from "./components/AddItemsToVault";
 import Settings from "./components/Settings";
 
 export default function App() {
@@ -52,8 +52,8 @@ export default function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/cards">
-            <Cards />
+          <Route exact path="/addItemToVault">
+            <AddItemsToVault />
           </Route>
           <Route exact path="/settings">
             <Settings />
