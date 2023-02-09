@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 function AddItemsToVault() {
   const history = useHistory();
-  const [userName, setUserName] = useState("");
+  const [app, setApp] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [url, setUrl] = useState("");
@@ -18,10 +18,9 @@ function AddItemsToVault() {
       },
       body: JSON.stringify({
         userId: username,
-        app: "test",
+        app: app,
         created_at: "today",
         last_used_at: "today",
-        // username: userName,
         email: email,
         password: password,
         url: url
@@ -76,7 +75,7 @@ function AddItemsToVault() {
           <div className="mb-2">
             <label htmlFor="text" className="block text-sm font-semibold text-gray-800"></label>
             User Name
-            <input required value={userName} onChange={e => setUserName(e.target.value)} type="text" className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+            <input required value={app} onChange={e => setApp(e.target.value)} type="text" className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />
           </div>
           <div className="mb-2">
             <label htmlFor="email" className="block text-sm font-semibold text-gray-800"></label>

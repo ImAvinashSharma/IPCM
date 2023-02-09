@@ -26,7 +26,9 @@ function VaultItems() {
       <div className="m-2 flex justify-between items-center">
         <div className="flex items-center space-x-2">{/* DO Something */}</div>
         <div className="flex items-center space-x-2">
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">Add New</button>
+          <Link to="/addItemToVault" className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
+            Add New
+          </Link>
         </div>
       </div>
 
