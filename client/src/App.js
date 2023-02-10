@@ -5,8 +5,10 @@ import Dashboard from "./components/Dashboard";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import SignUp from "./auth/SignUp";
 import Home from "./components/Home";
-import AddItemsToVault from "./components/AddItemsToVault";
+import AddItemsToVault from "./vault/AddItemsToVault";
 import Settings from "./components/Settings";
+import Cards from "./vault/Cards";
+
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -57,6 +59,9 @@ export default function App() {
           </Route>
           <Route exact path="/settings">
             <Settings />
+          </Route>
+          <Route exact path="/cards">
+            <Cards />
           </Route>
         </Switch>
       </div>
