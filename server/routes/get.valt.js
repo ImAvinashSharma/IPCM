@@ -8,4 +8,5 @@ module.exports = function (app) {
   });
   // [authJwt.verifyToken]
   app.get("/api/valtItem/:userId", controller.getVaultItem);
+  app.delete("/api/deleteVaultItem/:userId/:index", controller.deleteVaultItem);
 };

@@ -10,7 +10,6 @@ function AddItemsToVault() {
 
   const AddItem = () => {
     const { username } = JSON.parse(localStorage.getItem("user"));
-    console.log(username);
     fetch("http://localhost:3001/api/vault/addItem", {
       method: "POST",
       headers: {
@@ -32,7 +31,9 @@ function AddItemsToVault() {
       .then(() => {
         history.push("/dashboard");
       })
-      .finally(() => {});
+      .finally(() => {
+        alert("Item added to vault");
+      });
   };
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">

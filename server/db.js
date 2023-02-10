@@ -26,9 +26,9 @@ let client = new cassandra.Client(options);
 let state = client.getState();
 
 client.on("log", function (level, loggerName, message, furtherInfo) {
-  // if (level === "info") {
+  if (level === "info") {
   console.log(`${level} - ${loggerName}:  ${message} ${furtherInfo}`);
-  // }
+  }
 });
 
 module.exports.state = state;

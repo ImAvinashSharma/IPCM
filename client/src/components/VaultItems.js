@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 function VaultItems() {
   const [vaultItems, setVaultItems] = useState([]);
   useEffect(() => {
-    const local = localStorage.getItem("user");
-    const { username } = JSON.parse(local);
+    const { username } = JSON.parse(localStorage.getItem("user"));
     fetch(`http://localhost:3001/api/valtItem/${username}`, {
       method: "GET",
       headers: {
@@ -19,6 +18,22 @@ function VaultItems() {
         setVaultItems(data);
       });
   }, []);
+  const deleteVaultItem = index => {
+    const { username } = JSON.parse(localStorage.getItem("user"));
+    fetch(`http://localhost:3001/api/deleteVaultItem/${username}/${index}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": localStorage.getItem("token")
+      }
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+      });
+  };
 
   return (
     <div className="p-2">
@@ -83,12 +98,10 @@ function VaultItems() {
                     <td className="px-6 py-4">{vaultItem.created_at}</td>
                     <td className="px-6 py-4">{vaultItem.last_used_at}</td>
                     <td className="flex items-center px-6 py-4 space-x-3">
-                      <Link to="/edit" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                        Edit
-                      </Link>
-                      <Link to="/delete" className="font-medium text-red-600 dark:text-red-500 hover:underline">
+                      <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                      <button onClick={e => deleteVaultItem(id)} className="font-medium text-red-600 dark:text-red-500 hover:underline">
                         Remove
-                      </Link>
+                      </button>
                     </td>
                   </tr>
                 );

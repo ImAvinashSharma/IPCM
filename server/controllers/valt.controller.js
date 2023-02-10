@@ -15,9 +15,15 @@ const client = redis.createClient();
 
 exports.getVaultItem = async (req, res) => {
   const { userId } = req.params;
-  const vault = await client.LRANGE(userId, 0, -1);
-  const vaultItems = vault.map(item => JSON.parse(item));
-  res.status(200).json(vaultItems);
+  if (!userId) return res.status(400).json({ message: "Invalid request" });
+  try {
+    const vault = await client.LRANGE(userId, 0, -1);
+    const vaultItems = vault.map(item => JSON.parse(item));
+    return res.status(200).json(vaultItems);
+  } catch (err) {
+    console.log(err);
+  }
+  return res.status(400).json([]);
 };
 
 exports.addItemsToVault = async (req, res) => {
@@ -25,4 +31,26 @@ exports.addItemsToVault = async (req, res) => {
   const vaultItem = JSON.stringify({ app, email, password, created_at, last_used_at, url });
   await client.lPush(userId, vaultItem);
   res.status(200).json({ message: "success" });
+};
+
+exports.editVaultItem = async (req, res) => {
+  const { userId, index } = req.params;
+  const { app, email, password, created_at, last_used_at, url } = req.body;
+  const vaultItem = JSON.stringify({ app, email, password, created_at, last_used_at, url });
+  await client.lSet(userId, index, vaultItem);
+  return res.status(200).json({ message: "success" });
+};
+
+exports.deleteVaultItem = async (req, res) => {
+  const { userId, index } = req.params;
+  console.log(userId, index);
+  const vaultItem = await client.lIndex(userId, index);
+  await client.lRem(userId, 0, vaultItem);
+  return res.status(200).json({ message: "success" });
+};
+
+exports.deleteVault = async (req, res) => {
+  const { userId } = req.params;
+  await client.del(userId);
+  return res.status(200).json({ message: "success" });
 };
