@@ -32,6 +32,9 @@ function VaultItems() {
       })
       .then(data => {
         console.log(data);
+      })
+      .finally(() => {
+        alert("Deleted Successfully");
       });
   };
 
