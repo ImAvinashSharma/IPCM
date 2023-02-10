@@ -25,14 +25,14 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: run server tests
-        env:
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          keyspace: ${{ secrets.keyspace }}
-          strategy: ${{ secrets.strategy }}
-          DataCenter: ${{ secrets.DataCenter }}
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        # env:
+        #   DB_HOST: ${{ secrets.DB_HOST }}
+        #   DB_PORT: ${{ secrets.DB_PORT }}
+        #   keyspace: ${{ secrets.keyspace }}
+        #   strategy: ${{ secrets.strategy }}
+        #   DataCenter: ${{ secrets.DataCenter }}
+        #   DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        #   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: cd server && npm install && npx jest
 
       - name: run client tests
