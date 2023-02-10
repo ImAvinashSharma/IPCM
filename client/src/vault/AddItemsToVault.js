@@ -75,7 +75,7 @@ function AddItemsToVault() {
         <div className="mt-6">
           <div className="mb-2">
             <label htmlFor="text" className="block text-sm font-semibold text-gray-800"></label>
-            User Name
+            Application Name
             <input required value={app} onChange={e => setApp(e.target.value)} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40" />
           </div>
           <div className="mb-2">
