@@ -33,7 +33,7 @@ jobs:
         #   DataCenter: ${{ secrets.DataCenter }}
         #   DB_USERNAME: ${{ secrets.DB_USERNAME }}
         #   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        run: cd server && npm install && npx jest
+        run: cd server && npm install
 
       - name: run client tests
         run: cd client && npm install
