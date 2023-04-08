@@ -112,3 +112,6 @@ Response: 404 0.285 ms
 
 Request: GET /api/deleteVaultItem/avinash at Fri Feb 10 2023 20:10:31 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
 Response: 404 0.307 ms 
+
+Request: GET /favicon.ico at Sat Mar 11 2023 12:18:54 GMT+0530, IP: ::1, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36
+Response: 404 0.926 ms 

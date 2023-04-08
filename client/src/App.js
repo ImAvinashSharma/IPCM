@@ -9,7 +9,6 @@ import AddItemsToVault from "./vault/AddItemsToVault";
 import Settings from "./components/Settings";
 import Cards from "./vault/Cards";
 
-
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -36,35 +35,33 @@ export default function App() {
 
   return (
     <Router>
-      <div>
-        <Switch>
-          <Route exact path="/dashboard">
-            <Redirect to="/dashboard" />
-            <Dashboard />
-          </Route>
-          <Route exact path="/signin">
-            <SignIn />
-          </Route>
-          <Route exact path="/signup">
-            <SignUp />
-          </Route>
-          <Route exact path="/forgotpassword">
-            <Forgot />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/addItemToVault">
-            <AddItemsToVault />
-          </Route>
-          <Route exact path="/settings">
-            <Settings />
-          </Route>
-          <Route exact path="/cards">
-            <Cards />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/dashboard">
+          <Redirect to="/dashboard" />
+          <Dashboard />
+        </Route>
+        <Route exact path="/signin">
+          <SignIn />
+        </Route>
+        <Route exact path="/signup">
+          <SignUp />
+        </Route>
+        <Route exact path="/forgotpassword">
+          <Forgot />
+        </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/addItemToVault">
+          <AddItemsToVault />
+        </Route>
+        <Route exact path="/settings">
+          <Settings />
+        </Route>
+        <Route exact path="/cards">
+          <Cards />
+        </Route>
+      </Switch>
     </Router>
   );
 }

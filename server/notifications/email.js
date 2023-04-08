@@ -18,11 +18,11 @@ const sendMail = async (to, subject, html) => {
     subject,
     html
   };
-
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) console.log(err);
     else console.log(info);
   });
+  console.log("Email");
 };
 
 module.exports = sendMail;

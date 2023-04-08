@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-function VaultItems() {
+
+function CardsBE() {
   const [vaultItems, setVaultItems] = useState([]);
   const [hide, setHide] = useState(true);
-  useEffect(() => {
-    const { username } = JSON.parse(localStorage.getItem("user"));
-    fetch(`http://localhost:3001/api/valtItem/${username}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token")
-      }
-    })
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setVaultItems(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   const { username } = JSON.parse(localStorage.getItem("user"));
+  //   fetch(`http://localhost:3001/api/valtItem/${username}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "x-access-token": localStorage.getItem("token")
+  //     }
+  //   })
+  //     .then(res => {
+  //       return res.json();
+  //     })
+  //     .then(data => {
+  //       setVaultItems(data);
+  //     });
+  // }, []);
   const deleteVaultItem = index => {
     const { username } = JSON.parse(localStorage.getItem("user"));
     fetch(`http://localhost:3001/api/deleteVaultItem/${username}/${index}`, {
@@ -41,7 +42,7 @@ function VaultItems() {
 
   return (
     <div className="p-2">
-      <div className="text-3xl p-2 font-bold">Vault Items</div>
+      <div className="text-3xl p-2 font-bold">Card Items</div>
       <div className="m-2 flex justify-between items-center">
         <div className="flex items-center space-x-2">{/* DO Something */}</div>
         <div className="flex items-center space-x-2">
@@ -64,13 +65,10 @@ function VaultItems() {
                 </div>
               </th>
               <th scope="col" className="px-6 py-3">
-                application name
+                Card name
               </th>
               <th scope="col" className="px-6 py-3">
-                username
-              </th>
-              <th scope="col" className="px-6 py-3">
-                password
+                Card No.
               </th>
               <th scope="col" className="px-6 py-3">
                 created at
@@ -121,4 +119,4 @@ function VaultItems() {
   );
 }
 
-export default VaultItems;
+export default CardsBE;
