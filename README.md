@@ -1,21 +1,22 @@
 ## Kind request not to touch the main branch
+
 # IPCS
 
 ## How to run
 
 ### Prerequisites
-  * docker
-  * docker-compose
-  * node js 14 and above
-  * nginx
+
+- docker
+- docker-compose
+- node js 14 and above
+- nginx
 
 ### Run command
 
 ```bash
-  docker-compose build
-  docker-compose up -d
+  docker run -d -p 9042:9042 cassandra:4.0.7
+  cd server
+  npm run dev
+  cd ../client
+  npm start
 ```
-
-<https://github.com/ahester57/ipfs-private-swarm>
-
-<https://github.com/nshCore/ipfs-private-network/blob/master/docker-compose.yml>
